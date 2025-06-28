@@ -1,5 +1,5 @@
 import React, {memo} from 'react';
-import {ContactDto} from 'src/types/dto/ContactDto';
+import {ContactDto} from 'src/models/types/dto/ContactDto';
 import {Card, ListGroup} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 

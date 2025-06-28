@@ -11,9 +11,10 @@ import {
   GroupListPage,
 } from 'src/pages';
 import { store } from 'src/store/store';
-import { fetchContacts, fetchGroups } from 'src/store/actions';
+import { fetchContacts } from 'src/store/actions/contactsActions';
+import { fetchGroups } from 'src/store/actions/groupsActions';
 import { Provider } from 'react-redux';
-import { useAppDispatch } from 'src/store/hooks';
+import { useAppDispatch } from 'src/hooks/hooks';
 
 export const MainApp = () => (
     <Provider store={store}>

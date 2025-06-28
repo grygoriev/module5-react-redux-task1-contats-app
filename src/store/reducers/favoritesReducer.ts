@@ -1,4 +1,4 @@
-import {FAVORITE_TOGGLE, RootAction} from 'src/store/actions';
+import {RootAction, FAVORITE_TOGGLE} from 'src/store/actions';
 
 export type FavoritesState = string[];
 

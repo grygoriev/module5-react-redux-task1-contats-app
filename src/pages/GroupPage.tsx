@@ -1,25 +1,26 @@
 import React, {memo, useEffect, useState} from 'react';
 import {Col, Row} from 'react-bootstrap';
 import {useParams} from 'react-router-dom';
-import {ContactDto} from 'src/types/dto/ContactDto';
-import {GroupContactsDto} from 'src/types/dto/GroupContactsDto';
+import {ContactDto} from 'src/models/types/dto/ContactDto';
+import {GroupContactsDto} from 'src/models/types/dto/GroupContactsDto';
 import {GroupContactsCard} from 'src/components/GroupContactsCard';
 import {Empty} from 'src/components/Empty';
 import {ContactCard} from 'src/components/ContactCard';
-import {useAppSelector} from "src/store/hooks";
+import {useAppSelector} from "src/hooks/hooks";
+import {contactsSelector, groupsSelector} from "src/store/selectors";
 
 export const GroupPage = memo(() => {
   const {groupId} = useParams<{ groupId: string }>();
   const [contacts, setContacts] = useState<ContactDto[]>([]);
   const [groupContacts, setGroupContacts] = useState<GroupContactsDto>();
-  const contactsState   = useAppSelector((s) => s.contacts.items);
-  const groupContactsState     = useAppSelector((s) => s.groups.items);
+  const contactsState   = useAppSelector(contactsSelector);
+  const groupContactsState     = useAppSelector(groupsSelector);
 
   useEffect(() => {
-    const group = groupContactsState.find((g) => g.id === groupId);
-    setGroupContacts(group);
+    const groupFiltered = groupContactsState.find((group) => group.id === groupId);
+    setGroupContacts(groupFiltered);
     setContacts(
-        group ? contactsState.filter((c) => group.contactIds.includes(c.id)) : []
+        groupFiltered ? contactsState.filter((contact) => groupFiltered.contactIds.includes(contact.id)) : []
     );
   }, [groupId, contactsState, groupContactsState]);
 

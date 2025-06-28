@@ -2,11 +2,12 @@ import React, { memo, useMemo } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { ContactCard } from 'src/components/ContactCard';
 import { FilterForm, FilterFormValues } from 'src/components/FilterForm';
-import { useAppSelector } from 'src/store/hooks';
+import { useAppSelector } from 'src/hooks/hooks';
+import {contactsSelector, groupsSelector} from "src/store/selectors";
 
 export const ContactListPage = memo(() => {
-  const contacts = useAppSelector((state) => state.contacts.items);
-  const groups     = useAppSelector((state) => state.groups.items);
+  const contacts = useAppSelector(contactsSelector);
+  const groups     = useAppSelector(groupsSelector);
 
   const [filter, setFilter] = React.useState<Partial<FilterFormValues>>({});
 
@@ -14,11 +15,11 @@ export const ContactListPage = memo(() => {
     let list = contacts;
     if (filter.name) {
       const q = filter.name.toLowerCase();
-      list = list.filter((c) => c.name.toLowerCase().includes(q));
+      list = list.filter((contact) => contact.name.toLowerCase().includes(q));
     }
     if (filter.groupId) {
-      const g = groups.find((gr) => gr.id === filter.groupId);
-      if (g) list = list.filter((c) => g.contactIds.includes(c.id));
+      const groupFiltered = groups.find((group) => group.id === filter.groupId);
+      if (groupFiltered) list = list.filter((contact) => groupFiltered.contactIds.includes(contact.id));
     }
     return list;
   }, [contacts, groups, filter]);

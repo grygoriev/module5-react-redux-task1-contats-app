@@ -10,9 +10,7 @@ import {
     ThunkMiddleware,
 } from 'redux-thunk';
 
-import { contactsReducer }   from './reducers/contactsReducer';
-import { groupsReducer }     from './reducers/groupsReducer';
-import { favoritesReducer }  from './reducers/favoritesReducer';
+import { contactsReducer, groupsReducer, favoritesReducer }   from './reducers';
 
 const rootReducer = combineReducers({
     contacts:   contactsReducer,

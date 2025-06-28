@@ -1,5 +1,5 @@
-import { GroupContactsDto } from 'src/types/dto/GroupContactsDto';
-import {GROUPS_FETCH_FAILURE, GROUPS_FETCH_REQUEST, GROUPS_FETCH_SUCCESS, RootAction} from 'src/store/actions';
+import { GroupContactsDto } from 'src/models/types/dto/GroupContactsDto';
+import {RootAction, GROUPS_FETCH_FAILURE, GROUPS_FETCH_REQUEST, GROUPS_FETCH_SUCCESS} from 'src/store/actions';
 
 export interface GroupsState {
     items: GroupContactsDto[];

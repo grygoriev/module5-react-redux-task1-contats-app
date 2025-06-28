@@ -3,7 +3,7 @@ import {
     useDispatch,
     useSelector,
 } from 'react-redux';
-import type { RootState } from './store';
+import type { RootState } from '../store/store';
 import type { AnyAction } from 'redux';
 import type { ThunkDispatch } from 'redux-thunk';
 

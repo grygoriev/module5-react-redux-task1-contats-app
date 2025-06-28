@@ -1,4 +1,4 @@
-import { ContactDto } from 'src/types/dto/ContactDto';
+import { ContactDto } from 'src/models/types/dto/ContactDto';
 import { RootAction, CONTACTS_FETCH_FAILURE, CONTACTS_FETCH_REQUEST, CONTACTS_FETCH_SUCCESS} from "src/store/actions";
 
 export interface ContactsState {
